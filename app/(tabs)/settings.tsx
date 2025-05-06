@@ -13,9 +13,14 @@ import Top from '@/components/top';
 import { primary } from '@/constants/Colors';
 import Storage from '@/hooks/handleStorage';
 
-export default function SettingScreen() {
-  const { changeNoti, changeTheme, user, deleteAll } = Storage();
 
+
+export default function SettingScreen() {
+  const { changeNoti, changeTheme, user, deleteAll, fetchUser } = Storage();
+  useEffect(() => {
+    fetchUser();
+  
+  },[user]);
   const [isNotification, setIsNotification] = useState(false);
   const toggleNotification = () => {
     setIsNotification(previousState => !previousState);

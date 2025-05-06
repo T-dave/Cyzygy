@@ -268,12 +268,12 @@ const Storage = ()=>{
 
     const deleteAll = async () => {
         try {
-          const res = await fetch('http://<YOUR-IP>:3000/students');
+          const res = await fetch(`${API_URL}/students`);
           const students = await res.json();
       
           await Promise.all(
             students.map((student: { id: any; }) =>
-              fetch(`http://<YOUR-IP>:3000/students/${student.id}`, {
+              fetch(`${API_URL}/students/${student.id}`, {
                 method: 'DELETE',
               })
             )

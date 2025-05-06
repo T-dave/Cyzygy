@@ -15,9 +15,9 @@ interface ModalInt{
 }
 
 export default function SettingsModal({modalVisible, setModalVisible}:ModalInt) {
-    const { user, fetchUser, changePassword } = Storage();
+    const { user, changePassword, fetchStudents, buttonLoad } = Storage();
     useEffect(() => {
-        fetchUser();
+        fetchStudents();
       },[]);
       
     const [password, setPassword] = useState("");
@@ -50,24 +50,21 @@ export default function SettingsModal({modalVisible, setModalVisible}:ModalInt) 
         <View style={styles.content}>
             <View style={styles.buttons}> 
             <InputPassword 
-                  placeholder='Old Password'
-                  setText={setPassword}
-              />
+                      placeholder='Old Password'
+                      setText={setPassword} value={password}              />
             <TouchableOpacity style={styles.forgot}>
                 <ThemedText lightColor='#9B9B9B'>Forgot Password</ThemedText>
             </TouchableOpacity>
             <InputPassword 
-                  placeholder='New Password'
-                  setText={setNewPassword}
-              />
+                      placeholder='New Password'
+                      setText={setNewPassword} value={newPassword}              />
                 <View style={{margin:10}}/>
             <InputPassword 
-                  placeholder='Repeat New Password'
-                  setText={setRepeat}
-              />
+                      placeholder='Repeat New Password'
+                      setText={setRepeat} value={repeat}              />
                 <View style={{margin:10}}/>
             </View>
-            <Button text={'SAVE PASSWORD'} disabled = {disable()} onPress={handleChange}/>
+            <Button text={'SAVE PASSWORD'} disabled={disable()} onPress={handleChange} isLoading={buttonLoad}/>
         </View>
     </CustomModal>
   );

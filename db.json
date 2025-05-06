@@ -5,7 +5,7 @@
       "name": "David Omotara",
       "email": "tomyomo@gmail.com",
       "status": "Graduated",
-      "notifications": false,
+      "notifications": true,
       "lightTheme": true,
       "password": "Q3l6eWd5MTIz"
     }
@@ -164,6 +164,13 @@
       "email": "tomyomo@gmail.com",
       "status": "Graduated",
       "image": "https://i.imgur.com/eaOmV6q.jpeg"
+    },
+    {
+      "id": "5609",
+      "name": "David Omotara",
+      "email": "tomyomo@gmail.com",
+      "status": "Graduated",
+      "image": "https://i.imgur.com/myV123w.jpeg"
     }
   ]
 }

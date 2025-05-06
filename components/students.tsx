@@ -3,6 +3,7 @@ import StudentCard from './student';
 import { ScrollView } from 'react-native-gesture-handler';
 import Storage from '@/hooks/handleStorage';
 import { useEffect, useRef } from 'react';
+import { ThemedText } from './ThemedText';
 
 interface Bags {
     data: any;
@@ -12,7 +13,6 @@ interface Bags {
 }
 
 export default function Students({ data, onDelete, status, ref }: Bags) {
-
 
   const newData = ()=>{
     if (status === "All"){
@@ -28,6 +28,9 @@ export default function Students({ data, onDelete, status, ref }: Bags) {
       showsVerticalScrollIndicator={false}
       ref={ref}
     >
+      {
+        data && data.length >0 ?
+        <>
       {newData().map((item: any, index: any) => (
         <View key={index} style={styles.bag}>
           <StudentCard 
@@ -37,6 +40,10 @@ export default function Students({ data, onDelete, status, ref }: Bags) {
           />
         </View>
       ))}
+      </>
+      :
+    <ThemedText>No students Available</ThemedText>
+    }
     </ScrollView>
   );
 }

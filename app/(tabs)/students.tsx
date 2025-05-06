@@ -14,15 +14,13 @@ import { UserInfo } from '@/userInfo';
 
 
 export default function StudentScreen() {
-  const { students, fetchStudents, deleteStudent, fetchUser, user, changeStatus } = Storage();
+  const { students, fetchStudents, deleteStudent, user, changeStatus, fetchUser } = Storage();
   const scrollRef = useRef<ScrollView>(null);
-
   useEffect(() => {
     fetchUser();
     fetchStudents();
-    scrollRef.current?.scrollToEnd({ animated: true });
-    
-  },[students]);
+  },[user]);
+
 
   const onDelete=(id: any)=>{
     deleteStudent(id);
@@ -71,7 +69,14 @@ export default function StudentScreen() {
                         )}
                         />
         </View>
-        <Students data = {students} onDelete={onDelete} status={user.status} ref={scrollRef}/>
+        {
+        students && students.length >0 ?
+        <>
+        <Students onDelete={onDelete} status={user.status} ref={scrollRef} data={students}/>
+        </>
+      :
+    <ThemedText>No students Available</ThemedText>
+    }
     </ThemedView>
   );
 }
