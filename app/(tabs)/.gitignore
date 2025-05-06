@@ -1,0 +1,13 @@
+# .gitignore content for Expo projects
+node_modules/
+.expo/
+dist/
+.expo-shared/
+.env
+*.keystore
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+constants/
