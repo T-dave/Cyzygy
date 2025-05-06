@@ -1,4 +1,4 @@
-import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, KeyboardAvoidingView, Platform, ActivityIndicator } from 'react-native';
+import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, KeyboardAvoidingView, Platform, ActivityIndicator, Appearance } from 'react-native';
 import { useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { primary } from '@/constants/Colors';
@@ -41,7 +41,7 @@ export default function AddStudentScreen() {
 
     const textColor = useThemeColor({}, 'text');
     
-    const [profilePic, setProfilePic] = useState(null);
+    const [status, setStatus] = useState('');
     const disable = ()=>{
         if (newName.length>2 && /\S+@\S+\.\S+/.test(newEmail) && newStatus && imageUri){
             return false;
@@ -62,6 +62,29 @@ export default function AddStudentScreen() {
       setTimeout(() => router.replace("/(tabs)"), 100);
       
     }
+    const currentScheme = Appearance.getColorScheme();
+    const color1=()=>{
+      if(currentScheme ==='light'){
+        return "#FFF"
+      }else{
+        return "#444"
+      }
+    }
+    const color2=()=>{
+      if(currentScheme ==='light'){
+        return "#000"
+      }else{
+        return "#FFF"
+      }
+    }
+    const color3=()=>{
+      if(currentScheme ==='light'){
+        return 'blue'
+      }else{
+        return "#5555FF"
+      }
+    }
+  
   return (
     <ThemedView style={{flex:1}}>
         <Top topText="Add Student"/>
@@ -85,12 +108,12 @@ export default function AddStudentScreen() {
                     <View style={{margin:10}}/>
                     <InputText placeholder='Email' setText={setNewEmail} value={newEmail}/>
                     <View style={{margin:10}}/>
-                    <View style={styles.container}>
+                    <View style={{backgroundColor:color1()}}>
                         {renderLabel()}
                         <Dropdown
                         style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-                        placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
+                        placeholderStyle={[styles.placeholderStyle, {color:color2()}]}
+                        selectedTextStyle={[styles.selectedTextStyle, {color:color2()}]}
                         inputSearchStyle={styles.inputSearchStyle}
                         iconStyle={styles.iconStyle}
                         data={data}
@@ -98,7 +121,7 @@ export default function AddStudentScreen() {
                         labelField="label"
                         valueField="value"
                         placeholder={!isFocus ? 'Enrollment Status' : '...'}
-                        value={newStatus}
+                        value={"Value"}
                         onFocus={() => setIsFocus(true)}
                         onBlur={() => setIsFocus(false)}
                         onChange={item => {
@@ -108,7 +131,7 @@ export default function AddStudentScreen() {
                         renderLeftIcon={() => (
                             <AntDesign
                             style={styles.icon}
-                            color={isFocus ? 'blue' : 'black'}
+                            color={isFocus ? color3() : color2()}
                             name="Safety"
                             size={20}
                             />
@@ -118,7 +141,7 @@ export default function AddStudentScreen() {
                 </KeyboardAvoidingView>
             </ScrollView>
             <View>
-                <Button text={'ADD STUDENT'} disabled = {false} onPress={handleAdd} isLoading={buttonLoad}/>
+                <Button text={'ADD STUDENT'} disabled = {disable()} onPress={handleAdd} isLoading={buttonLoad}/>
             </View>
         </View>
         
@@ -167,10 +190,6 @@ const styles = StyleSheet.create({
        paddingHorizontal:16,
        paddingBottom:10,
      },
-     
-     container: {
-        backgroundColor: '#FFF',
-      },
       dropdown: {
         height: 50,
         borderRadius: 8,

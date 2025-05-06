@@ -21,7 +21,7 @@ export default function StudentCard  ({ data, onPress, onDelete }: Products) {
         >
             <View style={styles.bag}>
             <Image source={{ uri:data.image }} style={styles.image}/>
-            <ThemedView lightColor='#FFF' style={styles.right}>
+            <ThemedView lightColor='#FFF' darkColor='#444' style={styles.right}>
                 <View>
                     <ThemedText type='defaultSemiBold'>
                         {data.name}

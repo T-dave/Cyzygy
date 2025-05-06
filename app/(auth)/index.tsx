@@ -48,6 +48,7 @@ export default function LogInScreen() {
                         <Mid2 setEmail={setEmail} setPassword={setPassword} />
                     </View>
                     <Button text={'Sign In'} disabled = {disable()} onPress={handleAuth} isLoading={buttonLoad}/>
+                    <View style={{margin:20}}/>
                 </View>
             </TouchableWithoutFeedback>
     </ThemedScroll>

@@ -1,17 +1,27 @@
-import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, Modal,  } from 'react-native';
+import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, Modal, Appearance,  } from 'react-native';
 import { useEffect, useState } from 'react';
 import CustomModal from '@/components/CustomModal';
 import { ThemedText } from '@/components/ThemedText';
-import { primary } from '@/constants/Colors';
+import { Colors, primary } from '@/constants/Colors';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import Button from '@/components/button';
 import { InputPassword, InputText } from './input';
 import { Base64 } from 'js-base64';
 import Storage from '@/hooks/handleStorage';
+import { ThemedView } from './ThemedView';
 
 interface ModalInt{
     modalVisible:boolean;
     setModalVisible:(value: boolean) => void;
+}
+
+const currentScheme = Appearance.getColorScheme();
+const color=()=>{
+  if(currentScheme ==='light'){
+    return "#000"
+  }else{
+    return "#FFF"
+  }
 }
 
 export default function SettingsModal({modalVisible, setModalVisible}:ModalInt) {
@@ -47,7 +57,7 @@ export default function SettingsModal({modalVisible, setModalVisible}:ModalInt) 
   return (
     <CustomModal isVisible={modalVisible} onClose={() => setModalVisible(false)} heightPercentage={0.60} backdropOpacity={0.6}>  
         <ThemedText style={{fontSize:24, fontWeight:'700'}}>Password Change</ThemedText>
-        <View style={styles.content}>
+        <ThemedView style={styles.content} lightColor={Colors.light.background} darkColor='#000'>
             <View style={styles.buttons}> 
             <InputPassword 
                       placeholder='Old Password'
@@ -65,7 +75,7 @@ export default function SettingsModal({modalVisible, setModalVisible}:ModalInt) 
                 <View style={{margin:10}}/>
             </View>
             <Button text={'SAVE PASSWORD'} disabled={disable()} onPress={handleChange} isLoading={buttonLoad}/>
-        </View>
+        </ThemedView>
     </CustomModal>
   );
 }

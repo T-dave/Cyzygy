@@ -2,6 +2,7 @@ import { Colors } from "@/constants/Colors";
 import React from "react";
 import { View, StyleSheet, Dimensions, ScrollView } from "react-native";
 import Modal from "react-native-modal";
+import { ThemedView } from "./ThemedView";
 
 const { height } = Dimensions.get("window");
 
@@ -31,12 +32,12 @@ const CustomModal: React.FC<CustomModalProps> = ({
       backdropOpacity={backdropOpacity}
       style={[styles.modal, style]}
     >
-      <View style={[styles.modalContent, { height: height * heightPercentage }]}>
+      <ThemedView style={[styles.modalContent, { height: height * heightPercentage }]} lightColor={Colors.light.background} darkColor='#000'>
         <View style={styles.bar}/>
         <ScrollView contentContainerStyle={{alignItems: "center", flexGrow:1}} showsVerticalScrollIndicator={false}>
           {children}
         </ScrollView>
-      </View>
+      </ThemedView>
     </Modal>
   );
 };
@@ -47,7 +48,6 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   modalContent: {
-    backgroundColor: Colors.light.background,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingTop: 16,

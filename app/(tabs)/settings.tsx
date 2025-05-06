@@ -1,4 +1,4 @@
-import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, Switch, Modal } from 'react-native';
+import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, Switch, Modal, Appearance } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
@@ -51,6 +51,14 @@ export default function SettingScreen() {
   
     return firstInitial + lastInitial;
   }
+  const currentScheme = Appearance.getColorScheme();
+    const color1=()=>{
+      if(currentScheme ==='light'){
+        return "#FFF"
+      }else{
+        return "#444"
+      }
+    }
 
   return (
     <ThemedScroll>
@@ -91,7 +99,7 @@ export default function SettingScreen() {
               </View>
             </View>
 
-            <TouchableOpacity onPress={()=>setModalVisible(true)} style = {styles.changePassword}>
+            <TouchableOpacity onPress={()=>setModalVisible(true)} style = {[styles.changePassword, {backgroundColor:color1()}]}>
                 <ThemedText type='defaultSemiBold' style={{fontWeight:"500"}}>Change Password</ThemedText>
                 <Image 
                     source={require("../../assets/images/rightGrey.png")} 

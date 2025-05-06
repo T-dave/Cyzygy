@@ -4,9 +4,9 @@
       "id": "de58",
       "name": "David Omotara",
       "email": "tomyomo@gmail.com",
-      "status": "Graduated",
-      "notifications": true,
-      "lightTheme": true,
+      "status": "All",
+      "notifications": false,
+      "lightTheme": false,
       "password": "Q3l6eWd5MTIz"
     }
   ],
@@ -89,55 +89,6 @@
       "image": "https://i.imgur.com/CY9VIXE.jpeg"
     },
     {
-      "id": "71e5",
-      "name": "David Omotara",
-      "email": "tomyomo@gmail.com",
-      "status": "Graduated",
-      "image": null
-    },
-    {
-      "id": "35ba",
-      "name": "David Omotara",
-      "email": "tomyomo@gmail.com",
-      "status": "Graduated",
-      "image": null
-    },
-    {
-      "id": "2bf3",
-      "name": "David Omotara",
-      "email": "tomyomo@gmail.com",
-      "status": "Enrolled",
-      "image": null
-    },
-    {
-      "id": "01ec",
-      "name": "David Omotaral",
-      "email": "tomyomo@gmail.com",
-      "status": "Enrolled",
-      "image": null
-    },
-    {
-      "id": "c2e2",
-      "name": "David Omotarah",
-      "email": "tomyomo@gmail.cg",
-      "status": "Enrolled",
-      "image": null
-    },
-    {
-      "id": "7954",
-      "name": "David Omotarah",
-      "email": "tomyomo@gmail.cy",
-      "status": "Enrolled",
-      "image": null
-    },
-    {
-      "id": "2d96",
-      "name": "David Omotara",
-      "email": "tomyomo@gmail.com",
-      "status": "Enrolled",
-      "image": null
-    },
-    {
       "id": "cec3",
       "name": "David Omotarao",
       "email": "tomyomo@gmail.como",
@@ -171,6 +122,13 @@
       "email": "tomyomo@gmail.com",
       "status": "Graduated",
       "image": "https://i.imgur.com/myV123w.jpeg"
+    },
+    {
+      "id": "4595",
+      "name": "John Doe",
+      "email": "Testing@gmail.com",
+      "status": "Enrolled",
+      "image": "https://i.imgur.com/iGB6jwG.jpeg"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRef, useState } from 'react';
 import API_URL from '@/constants/url';
-import { Alert, ScrollView, InteractionManager } from 'react-native';
+import { Alert, ScrollView, InteractionManager, Appearance } from 'react-native';
 import clientId from '@/constants/image';
 import * as ImagePicker from 'expo-image-picker';
 import Toast from 'react-native-toast-message';
@@ -121,7 +121,9 @@ const Storage = ()=>{
               });
           
               if (updateResponse.ok) {
-                console.log('User updated successfully');
+                const currentScheme = Appearance.getColorScheme();
+                Appearance.setColorScheme(currentScheme === 'dark' ? 'light' : 'dark');
+                console.log(`User updated successfully to ${currentScheme}`);
                 fetchUser();
               } else {
                 console.error('Failed to update user');

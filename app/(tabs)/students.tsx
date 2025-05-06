@@ -1,4 +1,4 @@
-import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions } from 'react-native';
+import { ImageBackground, Keyboard, ScrollView, StyleSheet, TouchableOpacity, Image, View, Alert, Pressable, Text, Dimensions, Appearance } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
 import Top from '@/components/top';
 import Students from '@/components/students';
@@ -21,6 +21,21 @@ export default function StudentScreen() {
     fetchStudents();
   },[user]);
 
+  const currentScheme = Appearance.getColorScheme();
+  const color2=()=>{
+    if(currentScheme ==='light'){
+      return "#000"
+    }else{
+      return "#FFF"
+    }
+  }
+  const color3=()=>{
+    if(currentScheme ==='light'){
+      return 'blue'
+    }else{
+      return "#5555FF"
+    }
+  }
 
   const onDelete=(id: any)=>{
     deleteStudent(id);
@@ -62,7 +77,7 @@ export default function StudentScreen() {
                         renderLeftIcon={() => (
                             <AntDesign
                             style={styles.icon}
-                            color={isFocus ? 'blue' : 'black'}
+                            color={isFocus ? color3() : color2()}
                             name="filter"
                             size={25}
                             />
